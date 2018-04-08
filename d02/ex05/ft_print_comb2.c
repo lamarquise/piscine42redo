@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdio.h>
 
 void	ft_putchar(char c)
 {
@@ -20,26 +21,31 @@ void	print_func(int a, int b)
 	}
 }
 
-void	ft_print_comb2(void)
+int		ft_print_comb2(void)
 {
 	int		a;
 	int		b;
+	int		c;		//to help check with other people that your code is correct
 
+	c = 0;
 	a = 0;
-	b = 0;
+	b = 1;
 	while (a <= 98)
 	{
 		while (b <= 99)
 		{
 			print_func(a, b);
-			b++;
+			++b;
+			++c;
 		}
-		a++;
+		++a;
 		b = a + 1;
 	}
+	return c;
 }
 
-void	main(void)
+int		main()
 {
-	ft_print_comb2();
+	printf("\n%i\n", ft_print_comb2());
+	return 0;
 }

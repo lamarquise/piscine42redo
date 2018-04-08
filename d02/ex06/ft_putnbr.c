@@ -17,11 +17,9 @@ void	ft_putnbr(int nb)
 		ft_putchar('-');
 		nbr = -nbr;
 	}
-	while (nbr >= 10)
-	{
-		ft_putchar(nbr / 10 + 48);
-		ft_putnbr(nbr % 10);
-	}
+	if (nbr > 10)
+		ft_putnbr(nbr / 10);
+	ft_putchar(nbr % 10 + 48);
 }
 
 int		main(int argc, char *argv[])
