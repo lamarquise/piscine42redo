@@ -5,7 +5,7 @@ int		ft_strlen(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i] != '\0')		//works becasue after gets to last char, adds 1, so isnt missing 1 (tables starting at 0 BS)
 		++i;
 	return (i);
 }
