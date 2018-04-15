@@ -1,10 +1,15 @@
 #include <unistd.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 
 //
 //		OK so i got it, but i honestly still don't fully understand how it works, so haven't cleaned anything up yet
 //	may just leave as is, and try to redo without looking for ex08
+
+void	top();
+void	row(int row, int val);
+void	bottom();
+void	ft_grid(int *grid);
 
 int		m;
 
@@ -40,7 +45,7 @@ int		ft_reality_check(int *grid, int i, int c)	//so checks if a particular optio
 	return (c);		//thinking about using this func to write in the grid directly
 }
 
-void		ft_generate(int *grid, int i)		//not sure what the return should be, work out later, wait wait, maybe i don't need a return
+void		ft_generate(int *grid, int i, int y, int n)		//not sure what the return should be, work out later, wait wait, maybe i don't need a return
 {
 	int		c;
 
@@ -58,12 +63,19 @@ void		ft_generate(int *grid, int i)		//not sure what the return should be, work 
 		if (ft_reality_check(grid, i, c) != 0 && i < 8)
 		{
 			grid[i] = c;
-			if (i == 7)
+			if (i == 7)		//change this && if you want to print all solutions
 			{
-				ft_print(grid);
+				if (y == 1)
+					ft_print(grid);
+				else if (y == 2)
+					if (m == n)
+					{
+						ft_print(grid);
+						ft_grid(grid);
+					}
 				++m;
 			}
-			ft_generate(grid, i + 1);			//added return so it would only print 1 answer
+			ft_generate(grid, i + 1, y, n);			//added return so it would only print 1 answer
 		}									//So not working perfectly yet, this is the part where you add backtracking
 		++c;
 	}
@@ -91,15 +103,16 @@ void		ft_generate(int *grid, int i)		//not sure what the return should be, work 
 	//return (grid, i); 		yea that's not gona work with this return
 */
 
-void	ft_eight_queens_puzzle_2()
+void	ft_eight_queens_puzzle_2(int y, int n)
 {
 	int		grid[8] = {0,0,0,0,0,0,0,0};	//not sure the norm will let me do this
 //	int		i;
 	
 //	i = 0;
 	m = 0;
-	ft_generate(grid, 0);		//whatever starting with 1, ok so might need to change what im sending to just the grid, no i, so can have a return
-	printf("\n%i", m);
+	ft_generate(grid, 0, y, n);		//whatever starting with 1, ok so might need to change what im sending to just the grid, no i, so can have a return
+	if (y == 1)
+		printf("\n%i", m);
 	/*while (i < 8)
 	{
 		printf("%i\n", grid[i]);
@@ -107,8 +120,16 @@ void	ft_eight_queens_puzzle_2()
 	}*/
 }
 
-int		main()
+int		main(int argc, char *argv[])		//ok so the first imput is either 1 or 2 and sais either do ex09 or my side project and input 2 is for side project
 {
-	ft_eight_queens_puzzle_2();
+	if (argc == 2)
+		ft_eight_queens_puzzle_2(atoi(argv[1]), 1);
+	if (argc == 3)
+		ft_eight_queens_puzzle_2(atoi(argv[1]), atoi(argv[2]));
 	return (0);
 }
+
+
+
+
+
