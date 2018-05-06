@@ -11,7 +11,7 @@ int		base_check(char *base, int *l)		//this function is a bit longer than it nee
 {
 	int		c;
 
-	*l = 0;
+	*l = 0;									//fairly certain this is the bit i forgot and reason it was segfaulting for the longest time
 	while (base[*l])
 	{
 		c = 0;
