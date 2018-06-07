@@ -3,6 +3,10 @@
 
 	//God damn it took me way too long to figure this out, j'me suis bien pris la tete, wtf. This was a lot simpler than i thought it was
 
+	//Just FYI, to get the a.out to run, i use a $'string' format for the argument, $ makes it interpret \n as a carage return rather than as 2 seperate characters,
+	//but that's fine, the program isnt supposed to handle that, if anything, it's the main's job to make sure that happens, but i don't have to make that be the case
+	//cuz i can just use $, oh and "" don't work you have to use '' :)
+
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
