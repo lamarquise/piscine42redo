@@ -1,14 +1,14 @@
 #include <unistd.h>
 #include <stdio.h>
 
-			//Damn, can't do anything until we get that answer...
+			//Taking a break, maybe permanantly untill the Piscine...
 
 void	ft_putchar(char c)
 {
 	write(1, &c, c);
 }
 
-void	print_address(unsigned long n)		//OK so we're going to leave this as is, Pascal did it differently, but it seems to be find like this, and it works so...
+void	print_address(unsigned long long n)		//OK so this used to work fine, but now it doesn't at all... SMH
 {
 	char	*hex;
 
@@ -18,52 +18,48 @@ void	print_address(unsigned long n)		//OK so we're going to leave this as is, Pa
 	putchar(hex[n % 16]);
 }
 
-void	hex_print(it gets a character and a value that tells it to print " " or not)
+void	hex_print(char c, unsigned int j)
 {
 	char	*hex;
 
 	hex = "0123456789abcdef";
-
+	ft_putchar(hex[c / 16]);
+	ft_putchar(hex[c % 16]);
+	if (j % 2 == 0)
+		ft_putchar(' ');
 }
 
-void	print_char(gets a character and either prints . or char)
+void	print_char(char c)
 {
-	
+	if (c >= 32 && c<= 126)
+		ft_putchar(c);
+	else
+		ft_putchar('.');
 }
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int	i;
-	unsigned int	c;
-	char	*ch;
+	unsigned int	j;
 
-	i = 0;										//ok so im still pretty lost, no idea how to make this work, i understand the theory, but don't know how to implement
-	c = 1;										//so im taking a break, gonna work on d06 for a bit.
-//	while (i < size)
-//	{
-		print_address((unsigned long)addr + i);		//Effectively this just prints the address, easy peasy there is no base change
+	i = 0;
+	while (i < size)
+	{
+		print_address((unsigned long long)addr + i);
 		putchar(':');
 		putchar(' ');
-		
-
-
-
-
-//		while (i <= c * 16)
-//		{
-	//		ch = addr;					//this compiles but mostly useless, tried *ch = &address, didnt compile, but kinda makes sense
-	//		hex_print(*ch);				
-			hex_print(*(char*)addr);
-	//		hex_print((unsigned long)&addr);
-/*			putchar(' ');
-			i = i + 1;	//was 2
-		}
-		++c;
-	//	- something clever
-	
+		j = i;
+		while (++j < 16 + i && j < size)
+			hex_print(*(char*)(addr + j - 1), j);
+		ft_putchar(' ');
+		j = i;
+		while (++j < 16 + i && j < size)
+			print_char(*(char*)(addr + j - 1));
+		ft_putchar('\n');
+		i += 16;
 	}
-*/	return (addr); 	//OK so i tried printf ing this return in main, i tried casting the return to a char*, printed some weird shit, then i returned (*addr) and it fliped out
-}					//So i guess, who the fuck knows what's going on...
+	return (addr);
+}
 
 int		main(int argc, char *argv[])
 {
@@ -78,9 +74,9 @@ int		main(int argc, char *argv[])
 	}
 	if (argc == 2)
 	{
-//		printf("%i\n", i);
-//		printf("%p\n", ptr);
-//		printf("%s\n", argv[1]);
+		printf("%i\n", i);
+		printf("%p\n", ptr);
+		printf("%s\n", argv[1]);
 		ft_print_memory(ptr, i);
 	}
 	return (0);
