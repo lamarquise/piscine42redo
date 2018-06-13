@@ -2,12 +2,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-		//ok so i don't understand why this isnt working, i understand how other one works, but not why mine doesn't...
-
-		//So im happy to use someone else's solution, but what i want, the reason im doing this exercise, is to understand why my way doesn't work...
-
-		//ok so need some work, i think the ft function is fine, but once again my trouble is with the fucking main, like i can't test, uhggg...
-
 int		ft_ultimate_range(int **range, int min, int max)
 {
 	int		i;
@@ -15,18 +9,13 @@ int		ft_ultimate_range(int **range, int min, int max)
 	i = 0;
 	if (min < max)
 	{
-		printf("yo\n");
 		*range = (int*)malloc(sizeof(int) * (max - min));
-		printf("hi there\n");
-		while (i < max - min)			//this seems to be where it segfaults
+		while (i < max - min)
 		{
-			printf("sup ");
-			*range[i] = min + i;		//tried removing *, didn't compile
+			(*range)[i] = min + i;		//nothing works if don't have the ()
 			++i;
-			printf("bruh \n");
 		}
-		*range[i] = '\0';
-		printf("still here");
+		(*range)[i] = '\0';				//apparently shouldn't end a int array with \0 since its basically just a 0 interpreted as a character, so if there are any other 0s
 		return (i);
 	}
 	return (0);
