@@ -5,7 +5,7 @@ int		base_check(char *base, int *l)
 {
 	int		c;
 
-	c = 0;
+	c = 0;											//wait shouldn't this be in the first while loop???
 	*l = 0;
 	while (base[*l])
 	{

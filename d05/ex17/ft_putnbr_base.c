@@ -33,7 +33,7 @@ int		base_check(char *base, int *l)		//this function is a bit longer than it nee
 void	ft_putnbr_base(int nb, char *base)		//would it be faster if iterative? perhaps not by enough to be worth it
 {
 	long	nbr;
-	int		l;
+	int		l;									//wait why no * ???? wait no i think i get it
 
 	nbr = nb;
 	if (base_check(base, &l) == 1)
