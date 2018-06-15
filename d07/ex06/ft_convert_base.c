@@ -1,9 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-		//go look at the end of day 5 for math and inspiration of base changes
-
-		//Version one doesn't handle +s or -s, we'll get to that
+		//End of day 5 is where the 
 
 int		base_check(char *base, int *l)							//Ok so this both verifies that a base is valid and returns the length of that base, useful
 {
@@ -67,7 +65,7 @@ int		base10ification(char *nbr, char *base_from)
 }
 
 char	*convert_to_new_base(int number, int *n, char *base_to, char *nbr)
-{
+{																				//Some shit where if number is neg, never change nbr[0] have it set to '-'
 	char	*tab;
 	int		i;
 	int		l;
@@ -110,10 +108,9 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)		//since moving
 
 	n = 1;
 	number = base10ification(nbr, base_from);
-//	if (number >= 0)
-		convert_to_new_base(number, &n, base_to, nbr);
-/*	else if (number < 0)										//yea im not sure how to put this part in the convert_to_new_base function, it would be handy but...
+	if (number < 0)
 	{
+		convert_to_new_base(number, &n, base_to, nbr);			//yea im not sure how to put this part in the convert_to_new_base function, it would be handy but...
 		i = 0;
 		convert_to_new_base(number * -1, &n, base_to, nbr);
 		tab = malloc(sizeof(char) * n);
@@ -130,8 +127,9 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)		//since moving
 			++i;
 		}
 		nbr[0] = '-';
+		return (nbr);
 	}
-*/	return (nbr);
+	return (convert_to_new_base(number, &n, base_to, nbr));
 }
 
 int		main(int argc, char **argv)
