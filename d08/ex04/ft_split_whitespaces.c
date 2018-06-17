@@ -1,11 +1,6 @@
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "ft_stock_par.h"
-
-#define	IS_WSPACE(x) (((x) >= 9 && (x) <= 13) || (x) == 32 || (x) == 0)
 		
-		//this version of Split_whitespaces exists in a purely funcontional form for the purposes of the exercise, see d07 for version with useful notes
+		//this version of Split_whitespaces exists in a purely funcontional form for the purposes of the exercise, see d07 for a better version with useful notes
 		
 int		word_count(char *str)
 {

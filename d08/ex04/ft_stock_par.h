@@ -3,6 +3,7 @@
 	#define __FT_STOCK_PAR_H__
 	#include <unistd.h>
 	#include <stdlib.h>
+	#define IS_WSPACE(x) (((x) >= 9 && (x) <= 13) || (x) == 32 || (x) == 0)
 
 	typedef struct s_stock_par
 	{
@@ -12,9 +13,8 @@
 		char **tab;
 	}				t_stock_par;
 
-#endif
-
 void	ft_show_tab(struct s_stock_par *par);
-struct s_stock_par	*ft_param_to_tab(int ac, char **av);		//i think this will be useful for ex05, i think...
+struct s_stock_par	*ft_param_to_tab(int ac, char **av);
 char	**ft_split_whitespaces(char *str);
 
+#endif
