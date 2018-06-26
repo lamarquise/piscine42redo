@@ -47,7 +47,7 @@ int		main(int argc, char **argv)
 			tab[i] = atoi(argv[i + 1]);
 			++i;
 		}
-		ft_foreach(tab, argc - 1, f);
+		ft_foreach(tab, argc - 1, f);			//could have just called &putnumber, or i guess &putint here, damn, that's toight!!!
 	}
 	return (0);
 }
