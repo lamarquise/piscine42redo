@@ -13,10 +13,10 @@ void	ft_putint(int n)
 {
 	if (n >= 10)
 		ft_putint(n / 10);
-	ft_putchar(n % 10 + 48);
+//	ft_putchar(n % 10 + 48);
 //	ft_putchar('\n');
-//	(char)n = n % 10 + 48;									//wow ok it liked that even less, nvm, i'll get back to that some other time i guess, see pascal...
-//	write(1, n, 1);								//ok so this doesn't work, possibly because n is an int, compiler sais i didn't cast, which obvi, but fair...
+	n = n % 10 + 48;									//
+	write(1, &n, 1);								//ok so this doesn't work, possibly because n is an int, compiler sais i didn't cast, which obvi, but fair...
 }
 
 void	ft_foreach(int *tab, int length, void(*f)(int))
