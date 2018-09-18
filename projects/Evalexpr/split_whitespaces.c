@@ -49,3 +49,19 @@ char	**ft_split_whitespaces(char *str)
 	tab[n] = 0;
 	return (tab);
 }
+
+//test main
+
+int		main(int argc, char **argv)
+{
+	int		i;
+
+	i = 0;
+	if (argc == 2)
+	{
+		while (
+	}
+	return (0);
+}
+
+
